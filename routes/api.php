@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+//use Illuminate\Http\Request;
+//use Illuminate\Support\Facades\Route;
 
 /*
 |--------------------------------------------------------------------------
@@ -14,12 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['cors', 'json.response', 'auth:api'])->group(function () {
-    Route::get('/user', 'UserController@index')->middleware('api.admin');
-});
-
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
     Route::post('/register','Auth\ApiAuthController@register')->name('register.api');
     Route::get('/logout', 'Auth\ApiAuthController@logout')->name('logout.api');
 });
+
+Route::middleware(['cors', 'json.response', 'auth:api'])->group(function () {
+    Route::get('/user', 'UserController@index');
+});
+
