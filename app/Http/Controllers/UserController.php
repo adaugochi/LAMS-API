@@ -4,6 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+/**
+ * @group  User Authentication
+ *
+ * APIs for managing users
+ */
 class UserController extends Controller
 {
     /**

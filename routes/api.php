@@ -1,18 +1,6 @@
 <?php
 
-//use Illuminate\Http\Request;
-//use Illuminate\Support\Facades\Route;
-
-/*
-|--------------------------------------------------------------------------
-| API Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register API routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| is assigned the "api" middleware group. Enjoy building your API!
-|
-*/
+use Illuminate\Support\Facades\Route;
 
 Route::group(['middleware' => ['cors', 'json.response']], function () {
     Route::post('/login', 'Auth\ApiAuthController@login')->name('login.api');
@@ -21,6 +9,13 @@ Route::group(['middleware' => ['cors', 'json.response']], function () {
 });
 
 Route::middleware(['cors', 'json.response', 'auth:api'])->group(function () {
-    Route::get('/user', 'UserController@index');
+    Route::get('/user', 'UserController@index')->middleware('api.admin');
+});
+
+Route::group(['middleware' => ['cors', 'json.response']], function () {
+    Route::get('/categories', 'CategoryController@index')->name('categories');
+    Route::post('/save-category', 'CategoryController@createCategory')->name('save.category');
+    Route::get('/books', 'BookController@index')->name('books');
+    Route::post('/save-book', 'BookController@createBook')->name('save.book');
 });
 
