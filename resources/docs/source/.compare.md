@@ -157,20 +157,20 @@ Parameter | Type | Status | Description
     
 <!-- END_08e5488e3529ad3815de336ec336cf3f -->
 
-<!-- START_c84ecb8d4fd02d9a637dac124b62c629 -->
-## api/books
+<!-- START_5d4798fb1bbb3c556068149d5c3ce0a2 -->
+## api/book/{id}
 > Example request:
 
 ```bash
 curl -X GET \
-    -G "http://localhost/api/books" \
+    -G "http://localhost/api/book/1" \
     -H "Content-Type: application/json" \
     -H "Accept: application/json"
 ```
 
 ```javascript
 const url = new URL(
-    "http://localhost/api/books"
+    "http://localhost/api/book/1"
 );
 
 let headers = {
@@ -196,9 +196,85 @@ fetch(url, {
 ```
 
 ### HTTP Request
+`GET api/book/{id}`
+
+
+<!-- END_5d4798fb1bbb3c556068149d5c3ce0a2 -->
+
+<!-- START_c84ecb8d4fd02d9a637dac124b62c629 -->
+## api/books
+> Example request:
+
+```bash
+curl -X GET \
+    -G "http://localhost/api/books" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"token":"eyJ0eXAiOiJKV1Qi..."}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/books"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "token": "eyJ0eXAiOiJKV1Qi..."
+}
+
+fetch(url, {
+    method: "GET",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+{
+    "message": "success",
+    "data": [
+        {
+            "id": 1,
+            "category_id": 4,
+            "title": "introduction to css",
+            "shelf_no": 23,
+            "author_name": "kezel",
+            "quantity": 10,
+            "status": "available",
+            "is_active": 1,
+            "created_at": "2020-07-20T23:46:21.000000Z",
+            "updated_at": "2020-07-20T23:46:21.000000Z",
+            "category": {
+                "id": 4,
+                "key": "programming",
+                "name": "programming",
+                "created_at": "2020-07-20T22:53:18.000000Z",
+                "updated_at": "2020-07-20T22:53:18.000000Z"
+            }
+        }
+    ]
+}
+```
+
+### HTTP Request
 `GET api/books`
 
-
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `token` | string |  required  | Bearer authorization token.
+    
 <!-- END_c84ecb8d4fd02d9a637dac124b62c629 -->
 
 <!-- START_b4e7366a884b2595950c7acc942276ae -->
@@ -246,7 +322,8 @@ fetch(url, {
 
 ```json
 {
-    "message": "success"
+    "status": "success",
+    "message": "Book successfully added"
 }
 ```
 > Example response (422):
@@ -270,6 +347,126 @@ Parameter | Type | Status | Description
         `quantity` | integer |  required  | The quantity of book.
     
 <!-- END_b4e7366a884b2595950c7acc942276ae -->
+
+<!-- START_26abfcd52bf4f99088923f0f08001132 -->
+## api/deactivate-book
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/deactivate-book" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":1}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/deactivate-book"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 1
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+> Example response (422):
+
+```json
+{
+    "errors": "failed validation"
+}
+```
+
+### HTTP Request
+`POST api/deactivate-book`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `id` | integer |  required  | The id of book.
+    
+<!-- END_26abfcd52bf4f99088923f0f08001132 -->
+
+<!-- START_6fefab9376cdc7afe5a68612ded06d8e -->
+## api/activate-book
+> Example request:
+
+```bash
+curl -X POST \
+    "http://localhost/api/activate-book" \
+    -H "Content-Type: application/json" \
+    -H "Accept: application/json" \
+    -d '{"id":1}'
+
+```
+
+```javascript
+const url = new URL(
+    "http://localhost/api/activate-book"
+);
+
+let headers = {
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 1
+}
+
+fetch(url, {
+    method: "POST",
+    headers: headers,
+    body: body
+})
+    .then(response => response.json())
+    .then(json => console.log(json));
+```
+
+
+> Example response (200):
+
+```json
+null
+```
+> Example response (422):
+
+```json
+{
+    "errors": "failed validation"
+}
+```
+
+### HTTP Request
+`POST api/activate-book`
+
+#### Body Parameters
+Parameter | Type | Status | Description
+--------- | ------- | ------- | ------- | -----------
+    `id` | integer |  required  | The id of book.
+    
+<!-- END_6fefab9376cdc7afe5a68612ded06d8e -->
 
 #User Authentication
 

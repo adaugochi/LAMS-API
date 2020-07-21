@@ -2,7 +2,7 @@
     "variables": [],
     "info": {
         "name": "LAMS API",
-        "_postman_id": "1f7f58a6-9d6f-4e42-9528-4fe9471e20ab",
+        "_postman_id": "566584fb-d4bc-4339-b487-97b3ed3b6a12",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.0.0\/collection.json"
     },
@@ -68,6 +68,34 @@
                     }
                 },
                 {
+                    "name": "api\/book\/{id}",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/book\/:id",
+                            "query": []
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "[]"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
                     "name": "api\/books",
                     "request": {
                         "url": {
@@ -89,7 +117,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "[]"
+                            "raw": "{\n    \"token\": \"eyJ0eXAiOiJKV1Qi...\"\n}"
                         },
                         "description": "",
                         "response": []
@@ -118,6 +146,62 @@
                         "body": {
                             "mode": "raw",
                             "raw": "{\n    \"author_name\": \"John Doe\",\n    \"title\": \"Introduction to PHP\",\n    \"category_id\": 1,\n    \"shelf_no\": 20,\n    \"quantity\": 6\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/deactivate-book",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/deactivate-book",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1\n}"
+                        },
+                        "description": "",
+                        "response": []
+                    }
+                },
+                {
+                    "name": "api\/activate-book",
+                    "request": {
+                        "url": {
+                            "protocol": "http",
+                            "host": "localhost",
+                            "path": "api\/activate-book",
+                            "query": []
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\n    \"id\": 1\n}"
                         },
                         "description": "",
                         "response": []
